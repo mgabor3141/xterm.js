@@ -41,4 +41,18 @@ const addon = {
   mode: 'production'
 };
 
-module.exports = [addon];
+const addonEsm = {
+  ...addon,
+  output: {
+    filename: 'addon-image.mjs',
+    path: path.resolve('./lib'),
+    library: {
+      type: 'module',
+    },
+  },
+  experiments: {
+    outputModule: true,
+  },
+};
+
+module.exports = [addon, addonEsm];
